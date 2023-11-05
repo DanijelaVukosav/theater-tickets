@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Biletarnik.Models.PredstavaNaRepertoaru>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<section class="w3l-pricinghny">
+    <div class="pricing-inner-info py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <!---728x90--->
+
+
+            </div>
+            <!--/pricing-info-grids-->
+            @foreach (var item in Model)
+            {
+                <div class="pricing-info-grids">
+                    <div class="price-box">
+                        <div class="grid grid-column-2">
+                            <div class="column">
+                                <a class="title">@item.naziv</a>
+                            </div>
+                            <div class="column text-lg-center">
+                                <p class="price-title">@item.vrijemeOdrzavanja</p>
+                            </div>
+                            <div class="column price-number text-md-right">
+                                <h3 class="pricing">
+                                    @item.cijena<sup class="pri1">KM</sup>
+                                </h3>
+                            </div>
+                            <div class="column price-number text-md-right">
+                                <a href="/Rezervacija/Index/@item.id"><button class="btn read-button">Rezervisi</button></a>
+                                <a href="/Repertoar/RezervacijePredstave/@item.id" class="btn read-button">Rezervisano</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--/box-->
+                    <!--/box-->
+                    <!--/box-->
+
+                </div>
+            }
+            <!--/pricing-info-grids-->
+        </div>
+    </div>
+</section>
+<!--//pricing-->
+<div style="margin: 8px auto; display: block; text-align:center;">
+
+    <!---728x90--->
+
+</div>
+
+
+

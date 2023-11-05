@@ -1,0 +1,62 @@
+﻿@model AdministratorApp.Models.PredstavaNaRepertoaru
+
+@{
+    ViewBag.Title = "AddNew";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<h2>AddNew</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>PredstavaNaRepertoaru</h4>
+    <hr />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.naziv, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.ActionLink("Dodaj predstavu","AddNew","Predstave")
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.naziv, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.naziv, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.vrijemeOdrzavanja, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.vrijemeOdrzavanja, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.vrijemeOdrzavanja, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.cijena, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cijena, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cijena, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nazivSale, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.ActionLink("Dodaj salu","AddSalu", "Repertoar")
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nazivSale, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nazivSale, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

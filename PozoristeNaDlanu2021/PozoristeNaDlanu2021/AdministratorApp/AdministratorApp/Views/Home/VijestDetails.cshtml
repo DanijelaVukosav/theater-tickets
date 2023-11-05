@@ -1,0 +1,134 @@
+﻿@model AdministratorApp.Models.Vijest
+
+@{
+    ViewBag.Title = "VijestDetails";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<section class="w3l-blog-single">
+    <div class="single blog py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <!---728x90--->
+
+
+            </div>
+
+            <div class="d-grid grid-colunm-2 mt-4">
+                <!-- left side blog post content -->
+                <div class="single-left">
+                    <div class="single-left1">
+                        <div class="blg-img">
+                            
+                                <img src="~/slikevijesti/@Path.GetFileName(Model.slikeVijesti.FirstOrDefault())" />
+
+                        </div>
+                        <div class="btom-cont btom-cont1 pt-4 mt-md-2">
+                            <h4><span class="fa fa-clock-o mr-1" aria-hidden="true"></span> @Model.datum</h4>
+                            <h5 class="card-title"><a href="">@Model.naslov</a></h5>
+                            <ul class="admin-post">
+                                <li>
+                                    <a href="blog-single.html"><span class="fa fa-user"></span> Admin</a>
+                                </li>
+
+                                <li>
+                                    <a href="blog-single.html">
+                                        <span class="fa fa-comments-o"></span> @Model.komentariVijesti.Count()
+                                        Komentara
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="mb-4 mt-4">
+                                @Model.opis
+                            </p>
+                            <div class="container">
+                                <div class="row">
+                                    @foreach (var slika in Model.slikeVijesti)
+                                    {
+                                        <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="@Url.Content(slika)" /></div>
+                                    }
+                                </div>
+                            </div>
+
+
+                            <div class="comments mt-5">
+                                <h3 class="post-content-title">Komentari:</h3>
+                                @foreach (var komentar in Model.komentariVijesti)
+                                {
+                                    <div class="media mt-5">
+                                        <!--<div class="img-circle">
+                    <img src="~/images/c1.jpg" class="mr-3 rounded-circle" alt="...">
+                </div>-->
+                                        <div class="media-body">
+                                            <h5 class="mt-0">@komentar.username</h5>
+                                            <span class="time">@komentar.datum</span>
+                                            <p>
+                                                @komentar.sadrzaj
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </div>
+                            <div class="testi-top mt-5 pt-3">
+                                <h3 class="post-content-title">Vas komentar</h3>
+                                <div class="form-commets mt-5">
+                                    <form action="#" method="post">
+
+                                        <textarea name="Message" required="" placeholder="Unesi tekst komentara..."></textarea>
+                                        <div class="text-right mt-3">
+                                            <button class="btn read-button" type="submit">Post</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+</section>
+<div style="margin: 8px auto; display: block; text-align:center;">
+
+    <!---728x90--->
+
+</div>
+
+<script src="~/js/theme-change.js"></script>
+<script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+</script>
+<script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+</script>
+

@@ -1,0 +1,130 @@
+﻿@model AdministratorApp.Models.Predstava
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+
+
+
+<section class="w3l-text-8 genre-single">
+
+    <div class="container py-5">
+        <div class="d-grid-1 py-lg-4">
+            <div class="text">
+                <h6 class="text-logo">Studentsko pozoriste</h6>
+                <h3 class="hny-title"></h3>
+
+
+                <div class="genre-single-page my-lg-5 my-4">
+                    <div class="row ab-grids-sec align-items-center">
+                        <div class="col-lg-4 gen-right">
+                            <img class="img-fluid" src=@Model.putanja>
+                        </div>
+                        <div class="col-lg-8 gen-left pl-lg-4 mt-lg-0 mt-5">
+
+                            <h3 class="hny-title">@Model.naziv</h3>
+
+                            <ul class="admin-post mt-1">
+
+                                <li>
+                                    <a href="#">
+                                        <span class="fa fa-comments-o"></span> @Model.komentari.Count()
+                                        Komentara
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="share-more d-flex mt-4">
+                                <a href="/Predstave/Edit/@(Model.id)" class="btn read-button">Izmijeni</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="genre-single-page mb-lg-5 mb-4">
+                    <div class="row ab-grids-sec">
+
+                        <div class="col-lg-5 gen-right-1">
+                            <div class="mb-3">
+                                <p><b>Reziser :</b> </p>
+                                <p>@Model.rezija</p>
+                            </div>
+                            <div class="mb-3">
+                                <p><b>Scenograf :</b> </p>
+                                <p>@Model.scenografija</p>
+                            </div>
+                            <div class="mb-3">
+                                <p><b>Tekstopisac :</b> </p>
+                                <p>@Model.tekstopisac</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 gen-right-1">
+                            <p>
+                                @Model.opis
+                            </p>
+                            <br />
+                            <p>
+                                Glumci u predstavi:
+                                @foreach (var glumac in Model.glumci)
+                                {
+                                    <a href="/About/GlumacDetails/@glumac.id"> @glumac.ime @glumac.prezime,</a>
+
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        @foreach (var slika in Model.putanje)
+                        {
+                            <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="@slika" /></div>
+                        }
+                    </div>
+                </div>
+                <div class="w3l-blog-single comments mt-5">
+                    <h3 class="post-content-title">Komenatri</h3>
+
+                    @foreach (var komentar in Model.komentari)
+                    {
+                        <div class="media mt-5">
+
+                            <div class="media-body">
+                                <h5 class="mt-0">@komentar.username</h5>
+                                <span class="time">@komentar.datum</span>
+                                <a href="/Predstave/obrisiKomentar/@komentar.id">Obrisi komentar</a>
+                                <p>
+                                    @komentar.sadrzaj
+                                </p>
+                            </div>
+                        </div>
+
+                    }
+
+
+
+
+                    <div class="testi-top mt-5 pt-3">
+                        <h3 class="post-content-title">Komenatrisi</h3>
+                        <div class="form-commets mt-5">
+                            <form action="#" method="post">
+                                <textarea name="Message" required=""
+                                          placeholder="Unesi tekst komentara..."></textarea>
+                                <div class="text-right mt-3">
+                                    <button class="btn read-button" type="submit">Post</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Biletarnik.Models.Rezervacija>
+
+@{
+    ViewBag.Title = "SveBuduceRezervacije";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<br />
+<br />
+<h2>SveBuduceRezervacije</h2>
+<br />
+@using (Html.BeginForm("SveBuduceRezervacije", "Repertoar", FormMethod.Get))
+{
+    //the following are search options
+
+    <b>  Pretraga rezervacija po username-u       </b>
+
+    @Html.TextBox("search")
+    <input type="submit" name="submit" value="Search" />
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.brojKarata)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idPredstaveNaRepertoaru)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.naslovPredstave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sjedista)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.placeno)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.brojKarata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPredstaveNaRepertoaru)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.naslovPredstave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sjedista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.placeno)
+            </td>
+            <td>
+                <a href="/Rezervacija/KupiRezervaciju/@item.idRezervacija"><button class="btn read-button">Kupi</button></a>
+                <a href="/Rezervacija/ObrisiRezervaciju/@item.idRezervacija"><button class="btn read-button">Izbrisi</button></a>
+
+            </td>
+        </tr>
+    }
+
+</table>

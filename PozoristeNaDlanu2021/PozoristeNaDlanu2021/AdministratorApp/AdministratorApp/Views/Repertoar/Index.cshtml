@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AdministratorApp.Models.PredstavaNaRepertoaru>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<section class="w3l-pricinghny">
+    <div class="pricing-inner-info py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <div class="button-center text-center mt-3">
+                    <a href="/Repertoar/AddNew" asp-action="Create" asp-controller="Repertoar">
+                        Dodaj predstavu na repertoar<span class="fa fa-angle-double-right ml-2"
+                                                          aria-hidden="true"></span>
+                    </a>
+                </div>
+
+
+            </div>
+            <!--/pricing-info-grids-->
+            @foreach (var item in Model)
+            {
+                <div class="pricing-info-grids">
+                    <div class="price-box">
+                        <div class="grid grid-column-2">
+                            <div class="column">
+                                <a href="/Zanr/Details/@item.idPredstave" class="title">@item.naziv</a>
+                            </div>
+                            <div class="column text-lg-center">
+                                <p class="price-title">@item.vrijemeOdrzavanja</p>
+                            </div>
+                            <h3 class="pricing">
+                                <sup class="pri1">KM</sup>@item.cijena<sup class="pri"></sup>
+                            </h3>
+                            <div class="column price-number text-md-right">
+                                <a href="/Repertoar/OtkaziPredstavu/@item.id"><button class="btn read-button">Otkazi</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/box-->
+                    <!--/box-->
+                    <!--/box-->
+
+                </div>
+            }
+            <!--/pricing-info-grids-->
+        </div>
+    </div>
+</section>
+<!--//pricing-->
+<div style="margin: 8px auto; display: block; text-align:center;">
+
+    <!---728x90--->
+
+</div>
+
+
+

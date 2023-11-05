@@ -1,0 +1,91 @@
+﻿@model AdministratorApp.Models.DodavanjeGlumacaUPredstavu
+
+@{
+    ViewBag.Title = "AddGlumci";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+<h2>Glumci koji igraju u predstavi:</h2>
+
+<section class="w3l-pricinghny">
+    <div class="pricing-inner-info py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <!---728x90--->
+
+
+            </div>
+            <!--/pricing-info-grids-->
+            @foreach (var item in Model.glumciUPredstavi)
+            {
+                <div class="pricing-info-grids">
+                    <div class="price-box">
+                        <div class="grid grid-column-2">
+                            <div class="column">
+                                <a href="/About/GlumacDetails/@item.id" class="title">@item.ime @item.prezime</a>
+                            </div>
+
+                            <div class="column price-number text-md-right">
+                                @Html.ActionLink("Ukloni glumca", "IzbrisiPredstavuGlumcu", new {  idGlumac = item.id })
+                            </div>
+                        </div>
+                    </div>
+                    <!--/box-->
+                    <!--/box-->
+                    <!--/box-->
+
+                </div>
+            }
+            <!--/pricing-info-grids-->
+        </div>
+    </div>
+</section>
+<h2>Dodaj  glumca u predstavu</h2>
+
+<section class="w3l-pricinghny">
+    <div class="pricing-inner-info py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <!---728x90--->
+
+
+            </div>
+            <!--/pricing-info-grids-->
+            @foreach (var item in Model.neIgrajuUPredstavi)
+            {
+                <div class="pricing-info-grids">
+                    <div class="price-box">
+                        <div class="grid grid-column-2">
+                            <div class="column">
+                                <a href="/About/GlumacDetails/@item.id" class="title">@item.ime @item.prezime </a>
+                            </div>
+
+                            <div class="column price-number text-md-right">
+                                @Html.ActionLink("Dodaj glumca", "DodajPredstavuGlumcu", new { idGlumac = item.id })
+                            </div>
+                        </div>
+                    </div>
+                    <!--/box-->
+                    <!--/box-->
+                    <!--/box-->
+
+                </div>
+            }
+            <!--/pricing-info-grids-->
+        </div>
+    </div>
+</section>
+<!--//pricing-->
+<div style="margin: 8px auto; display: block; text-align:center;">
+
+    <!---728x90--->
+
+</div>
+<h3>
+    @Html.ActionLink("Kraj", "Index","Predstave")
+</h3>
+
+

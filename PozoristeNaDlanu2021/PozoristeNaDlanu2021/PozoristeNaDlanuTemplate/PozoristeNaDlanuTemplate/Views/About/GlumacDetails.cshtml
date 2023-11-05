@@ -1,0 +1,41 @@
+﻿@model PozoristeNaDlanuTemplate.Models.Glumac
+
+@{
+    ViewBag.Title = "GlumacDetails";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="/Home/Index">Home</a> » <a href="/About/Index">About</a> » <span class="breadcrumb_last" aria-current="page">@Model.ime @Model.prezime</span>
+        </div>
+    </nav>
+</div>
+<div>
+
+    <blockquote class="blockquote text-center">
+        <h1>@Model.ime @Model.prezime</h1>
+        <p class="mb-0">@Model.biografija</p>
+        <footer class="blockquote-footer">
+            <h6>Igrane predstave:</h6>
+            @foreach (var predstave in @Model.igranePredstave)
+            {
+                <a href="/Zanr/Details/@predstave.id" class="text-capitalize">@predstave.naziv , </a>
+            }
+        </footer>
+
+    </blockquote>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var slika in Model.slikeGlumca)
+        {
+            <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="@Url.Content(slika)" /></div>
+        }
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

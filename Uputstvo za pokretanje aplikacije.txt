@@ -1,0 +1,3 @@
+Aplikacija PozoristeNaDlanu je implementirana na ASP .NET platformi uz Visual Studio okruženje. 
+Za poketanje svake od aplikacija posebno( administratorska, korisnička,i aplikacija za biletarnika) potrebno je imati ekstenzije u Visual Studiju koje omogućavaju rad sa ASP.NET alatima.
+Pored toga, svaka od aplikacija, zahtijeva instaliran paket MySql.Web.

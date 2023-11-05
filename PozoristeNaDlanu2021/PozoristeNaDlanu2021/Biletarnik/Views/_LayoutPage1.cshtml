@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/csss/style-starter.css" rel="stylesheet" />
+    <a href="~/fontss/fontawesome-webfont.eot"></a>
+    <img src="~/fontss/fontawesome-webfont.svg" />
+    <a href="~/fontss/fontawesome-webfont.ttf"></a>
+    <a href="~/fontss/fontawesome-webfont.woff"></a>
+    <a href="~/fontss/fontawesome-webfont.woff2"></a>
+    <a href="~/fontss/FontAwesome.otf"></a>
+    <script src="~/jss/all.js"></script>
+    <script src="~/jss/app.js"></script>
+    <script src="~/jss/bootstrap.min.js"></script>
+    <script src="~/jss/easyResponsiveTabs.js"></script>
+    <script src="~/jss/jquery-1.9.1.min.js"></script>
+    <script src="~/jss/jquery-3.3.1.min.js"></script>
+    <script src="~/jss/jquery.countup.js"></script>
+    <script src="~/jss/jquery.magnific-popup.min.js"></script>
+    <script src="~/jss/jquery.waypoints.min.js"></script>
+    <script src="~/jss/main.js"></script>
+    <script src="~/jss/owl.carousel.js"></script>
+    <script src="~/jss/popper.min.js"></script>
+    <script src="~/jss/theme-change.js"></script>
+
+</head>
+<body>
+    <!-- header -->
+    <header id="site-header" class="w3l-header fixed-top">
+        <!--/nav-->
+        <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+            <div class="container">
+                <h1>
+                    <a class="navbar-brand" href="index.html">
+                        <span class="fa fa-play icon-log" aria-hidden="true"></span>
+                        Studentsko pozoriste
+                    </a>
+                </h1>
+                <!-- if logo is image enable this
+                        <a class="navbar-brand" href="#index.html">
+                            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                        </a> -->
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="fa icon-expand fa-bars"></span>
+                    <span class="fa icon-close fa-times"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+
+
+                        @if (Session["UserName"] == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home/Index">Login</a>
+                            </li>
+                        }
+                        @if (Session["UserName"] != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Repertoar/Index">Repertoar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Repertoar/SveBuduceRezervacije">Sve rezervacije</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Rezervacija/UplatiNaRacun">Uplati na racun</a>
+                            </li>
+                        }
+                    </ul>
+  
+                    <ul class="navbar-nav style="float:right!important">
+                        @if (Session["UserName"] != null)
+                        {
+                            <li><p style="margin-top15px">@Session["UserName"]</p></li>
+                            <li>
+                                <a href="/Home/Logout">  LogOut</a>
+                            </li>
+
+                        }
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+        <!--//nav-->
+    </header>
+    <!-- //header -->
+    <div>
+        @RenderBody()
+    </div>
+    <!-- footer-66 -->
+    <footer class="w3l-footer">
+        <section class="footer-inner-main">
+            <div class="footer-hny-grids py-5">
+                <div class="container py-lg-4">
+                    <div class="text-txt">
+                        <div class="right-side">
+                            <div class="row footer-about">
+                                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                    
+                                        <img class="img-fluid" src="~/images/logo.jfif"
+                                             alt="">
+                                    
+                                </div>
+                                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                    
+                                        <img class="img-fluid" src="~/images/slika1.jfif"
+                                             alt="">
+                                    
+                                </div>
+                                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                    
+                                        <img class="img-fluid" src="~/images/slika2.jfif"
+                                             alt="">
+                                    
+                                </div>
+                                <div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+                                    
+                                        <img class="img-fluid" src="~/images/slika3.jfif"
+                                             alt="">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="below-section">
+                <div class="container">
+                    <div class="copyright-footer">
+                        <div class="columns text-lg-left">
+                            <p>
+                                &copy; Pozoriste na dlanu - Projektovanje softvera
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- copyright -->
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                <span class="fa fa-arrow-up" aria-hidden="true"></span>
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function () {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+            <!-- /move top -->
+
+        </section>
+    </footer>
+    <!--//footer-66 -->
+</body>
+</html>
